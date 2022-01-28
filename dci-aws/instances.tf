@@ -61,6 +61,9 @@ resource "aws_instance" "ucp_manager_linux" {
   tags {
     Name = "${format("%s-Manager-Linux-%s", var.deployment, "${count.index + 1}")}"
   }
+  tags = {
+    yor_trace = "43f6b30f-60b4-4506-97a0-ef172883685f"
+  }
 }
 
 # UCP Worker Instances:
@@ -90,6 +93,9 @@ resource "aws_instance" "ucp_worker_linux" {
 
   tags {
     Name = "${format("%s-Worker-Linux-%s", var.deployment, "${count.index + 1}")}"
+  }
+  tags = {
+    yor_trace = "33c2e2a4-1d45-4deb-b84e-2648aff8eca3"
   }
 }
 
@@ -151,6 +157,9 @@ EOF
   timeouts {
     create = "1h"
   }
+  tags = {
+    yor_trace = "07198924-8724-4c6d-9898-cee01971d95f"
+  }
 }
 
 # DTR Instances:
@@ -178,5 +187,8 @@ resource "aws_instance" "ucp_worker_dtr" {
 
   tags {
     Name = "${format("%s-Worker-DTR-%s", var.deployment, "${count.index + 1}")}"
+  }
+  tags = {
+    yor_trace = "34c4208a-d000-447f-94f1-ecc83f95fcfb"
   }
 }

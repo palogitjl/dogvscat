@@ -67,6 +67,9 @@ resource "aws_security_group" "ddc" {
   timeouts {
     delete = "1h"
   }
+  tags = {
+    yor_trace = "844f81a8-76dd-4e87-af0a-f4db42ce061b"
+  }
 }
 
 resource "aws_security_group" "apps" {
@@ -97,6 +100,9 @@ resource "aws_security_group" "apps" {
 
   timeouts {
     delete = "1h"
+  }
+  tags = {
+    yor_trace = "6b9fdece-9421-458a-a31f-4dfe469d438c"
   }
 }
 
@@ -130,6 +136,9 @@ resource "aws_security_group" "elb" {
   timeouts {
     delete = "1h"
   }
+  tags = {
+    yor_trace = "99fd488f-6d44-4cd4-b35f-d4709e13ef25"
+  }
 }
 
 resource "aws_security_group" "dtr" {
@@ -160,5 +169,8 @@ resource "aws_security_group" "dtr" {
 
   timeouts {
     delete = "1h"
+  }
+  tags = {
+    yor_trace = "e2865b07-4d9f-40c5-80bf-73f38c3f7f15"
   }
 }
