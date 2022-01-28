@@ -6,6 +6,9 @@ resource "aws_efs_file_system" "cloudstor-gp" {
   }
 
   performance_mode = "generalPurpose"
+  tags = {
+    yor_trace = "4a389d94-fad7-4b56-8ed9-69c5a2b42247"
+  }
 }
 
 resource "aws_efs_file_system" "cloudstor-maxio" {
@@ -16,6 +19,9 @@ resource "aws_efs_file_system" "cloudstor-maxio" {
   }
 
   performance_mode = "maxIO"
+  tags = {
+    yor_trace = "46ef437f-79e5-415d-9a4b-3982ae9c8f2d"
+  }
 }
 
 resource "aws_efs_mount_target" "cloudstor-gp" {

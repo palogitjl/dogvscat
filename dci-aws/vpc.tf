@@ -6,7 +6,8 @@ resource "aws_vpc" "docker" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "${format("%s-vpc", "${var.deployment}")}"
+    Name      = "${format("%s-vpc", "${var.deployment}")}"
+    yor_trace = "88bc20f6-baa5-4500-9de7-71b7093acbb2"
   }
 }
 
@@ -26,7 +27,8 @@ resource "aws_subnet" "pubsubnet" {
   availability_zone       = "${element(data.aws_availability_zones.available.names, count.index)}"
 
   tags = {
-    Name = "${format("%s-Subnet-%d", "${var.deployment}", count.index + 1)}"
+    Name      = "${format("%s-Subnet-%d", "${var.deployment}", count.index + 1)}"
+    yor_trace = "cd9e55b1-d4bf-4e38-9e68-67442334f786"
   }
 }
 
@@ -44,6 +46,9 @@ resource "aws_internet_gateway" "igw" {
   tags {
     Name = "InternetGateway"
   }
+  tags = {
+    yor_trace = "e680ea99-ee32-4c34-b5b2-b0fff6a8cbcd"
+  }
 }
 
 resource "aws_route_table" "public_igw" {
@@ -57,6 +62,9 @@ resource "aws_route_table" "public_igw" {
 
   tags {
     Name = "${format("%s-rt", "${var.deployment}")}"
+  }
+  tags = {
+    yor_trace = "cbac3b67-aa7d-4d78-bf4c-1bea8515c6b5"
   }
 }
 

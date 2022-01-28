@@ -35,6 +35,9 @@ resource "aws_elb" "ucp" {
   idle_timeout              = 240
   cross_zone_load_balancing = true
   depends_on                = ["aws_internet_gateway.igw"]
+  tags = {
+    yor_trace = "509f2eab-ca3c-4545-b17b-811c856057c4"
+  }
 }
 
 resource "aws_elb" "apps" {
@@ -71,6 +74,9 @@ resource "aws_elb" "apps" {
   instances                 = ["${aws_instance.ucp_worker_linux.*.id}"]
   cross_zone_load_balancing = true
   depends_on                = ["aws_internet_gateway.igw"]
+  tags = {
+    yor_trace = "20032774-f946-4f06-83b0-2c7d5703ec9d"
+  }
 }
 
 resource "aws_elb" "dtr" {
@@ -108,4 +114,7 @@ resource "aws_elb" "dtr" {
   idle_timeout              = 240
   cross_zone_load_balancing = true
   depends_on                = ["aws_internet_gateway.igw"]
+  tags = {
+    yor_trace = "ffee855a-f36d-45ed-85cc-75f042b6b45d"
+  }
 }

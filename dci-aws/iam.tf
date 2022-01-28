@@ -19,11 +19,17 @@ resource "aws_iam_role" "dtr_iam_role" {
   ]
 }
 EOF
+  tags = {
+    yor_trace = "960f64fa-9d6b-4fdc-98ba-871eeb106ad4"
+  }
 }
 
 resource "aws_iam_instance_profile" "dtr_instance_profile" {
   name = "${var.deployment}_dtr_instance_profile"
   role = "${aws_iam_role.dtr_iam_role.id}"
+  tags = {
+    yor_trace = "26acfc5d-3c87-4ba1-98b3-22172a32bcd7"
+  }
 }
 
 resource "aws_iam_role_policy" "dtr_iam_role_policy" {
